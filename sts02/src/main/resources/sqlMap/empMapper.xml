@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+     
+     <sqlMap namespace="emp">
+     	<typeAlias alias="bean" type="com.bit.sts02.model.entity.EmpVo"/>
+     	<select id="selectAll" resultClass = "bean">
+     		select * from emp order by empno
+     	</select>
+     	
+     	<select id="selectOne" resultClass="bean" parameterClass="int">
+     		select * from emp where empno=#value#
+     	</select>
+     	
+     	<insert id="insertOne" parameterClass="bean">
+     		insert into emp (empno, ename, nalja, pay, deptno) values (#empno#,#ename#,now(),#pay#,#deptno#)
+     	</insert>
+     	
+     	<update id="updateOne" parameterClass="bean">
+     		update emp set ename=#ename#, pay=#pay#, deptno=#deptno# where empno=#empno#
+     	</update>
+     	
+     	<delete id="deleteOne" parameterClass="int">
+     		delete from emp where empno=#value#
+     	</delete>
+     </sqlMap>
