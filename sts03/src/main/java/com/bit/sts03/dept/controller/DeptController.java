@@ -2,6 +2,8 @@ package com.bit.sts03.dept.controller;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,9 @@ public class DeptController {
 	}
 	
 	@RequestMapping(value = "/dept/add", method = RequestMethod.GET)
-	public String addForm() {
+	public String addForm(HttpSession session) {
+//		if(session.getAttribute("result")==null)
+//			return "redirect:/login/";
 		return "dept/add";
 	}
 	

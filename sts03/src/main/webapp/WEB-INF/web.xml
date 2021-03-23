@@ -25,6 +25,16 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 		</init-param>
 	</filter>
 	
+	<filter>
+		<filter-name>loginCheck</filter-name>
+		<filter-class>com.bit.sts03.util.LoginFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>loginCheck</filter-name>
+		<url-pattern>/dept/*</url-pattern>
+	</filter-mapping>
+	
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
