@@ -14,6 +14,12 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.bit.sts03.dept.model.entity.DeptVo;
 
+/*
+ * 이 테스트는 모든 메소드의 수행이 직후에 바로 롤백되는 상황
+ * 테스트 리소스에 있는 applicationContext.xml에 auto commit을 false로 설정해두었기 때문
+ * 하지만 실제 데이터베이스에 영향을 주는 것은 아님
+ * 또한 실제 데이터베이스에 영향을 주어서도 안되는 것
+ */
 public class DeptDao01ImplTest {
 	
 	DeptDao<DeptVo> deptDao;

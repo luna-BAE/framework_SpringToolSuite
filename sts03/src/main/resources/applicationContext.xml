@@ -16,15 +16,21 @@
 	/>
 	
 	<bean
+	id = "jdbcTemplate"
 	class = "org.springframework.jdbc.core.JdbcTemplate"
 	p:dataSource-ref = "dataSource"
 	/>
 	
-	<bean
+	<!-- <bean
 	id = "deptDao"
 	class = "com.bit.sts03.dept.model.DeptDao01Impl"
-	/>
+	/> 어노테이션으로 Dao 주입하겠습니다-->
 	
-	<context:annotation-config/>
+	<!-- <context:annotation-config/> -->
+
+	<!-- <context:component-scan base-package="com.bit.sts03.dept.model"></context:component-scan> -->
+	<!-- Dao 클래스에 component 어노테이션을 설정하고, xml에서는 component를 스캔 -->
+	<!-- component 스캔에는 context:annotation을 포함 -->
+	<!-- 이미 servlet-context.xml에 정의되어 있으므로 두번 정의하면 안됨 -->
 
 </beans>

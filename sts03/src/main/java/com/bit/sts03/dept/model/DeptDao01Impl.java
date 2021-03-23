@@ -7,9 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.bit.sts03.dept.model.entity.DeptVo;
 
+@Repository
 public class DeptDao01Impl implements DeptDao<DeptVo> {
 
 	@Autowired
