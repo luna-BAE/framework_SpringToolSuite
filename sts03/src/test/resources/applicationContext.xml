@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- 사실 이 앞에는 빈스가 생략되어 있다. 딱 하나 생략 가능한 것은 디폴트 스키마 -->
+
+	<bean
+	id = "dataSource"
+	class = "org.apache.commons.dbcp.BasicDataSource"
+	p:driverClassName="org.mariadb.jdbc.Driver"
+	p:url="jdbc:mariadb://localhost:3306/xe"
+	p:username="scott" p:password="tiger"
+	p:defaultAutoCommit="false"
+	/>
+	
+	<bean
+	class = "org.springframework.jdbc.core.JdbcTemplate"
+	p:dataSource-ref = "dataSource"
+	/>
+	
+	<bean
+	id = "deptDao"
+	class = "com.bit.sts03.dept.model.DeptDao01Impl"
+	/>
+	
+	<context:annotation-config/>
+
+</beans>
