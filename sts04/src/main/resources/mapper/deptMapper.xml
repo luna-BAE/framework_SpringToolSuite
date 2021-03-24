@@ -9,7 +9,60 @@
   		select * from dept order by deptno
   	</select>
   	
-  	<select id="selectOne" parameterType="int" resultType="DeptVo">
+  	<!-- [ 동적SQL ] -->
+  	<!-- "if문" -->
+  	<!--  <select id="selectAll" parameterType="string" resultType = "DeptVo">
+  		select * from dept
+  		<if test="value != null"> 
+  		where loc like #{value} 
+  		</if>
+  		order by deptno
+  	</select> -->
+  	
+  	<!-- "if-if문" -->
+  	 <!--  <select id="selectAll" parameterType="string" resultType = "DeptVo">
+  		select * from dept
+  		<if test="value == '좀'"> 
+  		where loc like '조오오옴'
+  		</if>
+  		<if test="value != '돼라'"> 
+  		where loc like #{value} 
+  		</if>
+  		order by deptno
+  	</select> 어쨋든 이런 상황입니다 -->
+  	
+  	<!-- "choose문" -->
+  	<!--  <select id="selectAll" parameterType="string" resultType = "DeptVo">
+  		select * from dept
+  		<choose>
+  			<when test="string == '좀'">
+  				where loc like #{string}
+  			</when>
+  			<when test="string == '돼라'">
+  				where loc like #{string}
+  			</when>
+  			<otherwise>
+  				where loc like 'test'
+  			</otherwise>
+  		</choose>
+  		order by deptno
+  	</select> -->
+  	
+  	<!-- "where절" -->
+  	<!--  <select id="selectAll" parameterType="string" resultType = "DeptVo">
+  		select * from dept
+  		<where>
+  			<if test="value == '좀'"> 
+  			loc like '조오오옴'
+  			</if>
+  			<if test="value != '돼라'"> 
+  			loc like #{value} 
+  			</if>
+  			</where>
+  		order by deptno
+  	</select> -->
+  	
+  	<select id="selectOne" parameterType="_int" resultType="DeptVo">
   		select * from dept where deptno=#{value}
   	</select>
   	
@@ -17,7 +70,7 @@
   		insert into dept values (#{deptno},#{dname},#{loc})
   	</insert>
   	
-  	<delete id="deleteOne" parameterType="int">
+  	<delete id="deleteOne" parameterType="_int">
   		delete from dept where deptno=#{value}
   	</delete>
   	

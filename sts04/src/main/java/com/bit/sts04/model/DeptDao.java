@@ -7,6 +7,8 @@ import com.bit.sts04.model.entity.DeptVo;
 public interface DeptDao {
 
 	List<DeptVo> selectAll();
+	
+	List<DeptVo> selectAll2(String keyword);
 
 	DeptVo selectOne(int key);
 

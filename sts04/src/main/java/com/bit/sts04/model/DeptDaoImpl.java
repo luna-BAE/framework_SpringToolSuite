@@ -18,6 +18,11 @@ public class DeptDaoImpl implements DeptDao {
 	public List<DeptVo> selectAll(){
 		return session.selectList("dept.selectAll");
 	}
+
+	@Override
+	public List<DeptVo> selectAll2(String keyword) {
+		return session.selectList("dept.selectAll", keyword);
+	}
 	
 	@Override
 	public DeptVo selectOne(int key) {
@@ -38,4 +43,5 @@ public class DeptDaoImpl implements DeptDao {
 	public int deleteOne(int key) {
 		return session.delete("dept.deleteOne", key);
 	}
+
 }

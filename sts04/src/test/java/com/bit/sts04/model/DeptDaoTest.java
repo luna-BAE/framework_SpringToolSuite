@@ -73,5 +73,10 @@ public class DeptDaoTest {
 	public void testDeleteOne() {
 		assertEquals(1, deptDao.deleteOne(target.getDeptno()));
 	}
+	
+	@Test
+	public void testSelectAll2() {
+		System.out.println(deptDao.selectAll2("¼­¿ï"));
+	}
 
 }
