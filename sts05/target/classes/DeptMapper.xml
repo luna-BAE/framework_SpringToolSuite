@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.sts05.model.DeptDao">
+  <select id="selectAll" resultType="com.bit.sts05.model.entity.DeptVo">
+    select * from dept order by deptno
+  </select>
+  
+  <insert id="insertOne" parameterType="com.bit.sts05.model.entity.DeptVo">
+  	insert into dept values (#{deptno},#{dname},#{loc})
+  </insert>
+  
+  <update id="updateOne" parameterType="com.bit.sts05.model.entity.DeptVo">
+  	update dept set dname=#{dname}, loc=#{loc} where deptno=#{deptno}
+  </update>
+  
+  <select id="selectOne" parameterType="_int" resultType="com.bit.sts05.model.entity.DeptVo">
+  	select * from dept where deptno=#{value}
+  </select>
+  
+  <delete id="deleteOne" parameterType="_int">
+  	delete from dept where deptno=#{value}
+  </delete>
+</mapper>
