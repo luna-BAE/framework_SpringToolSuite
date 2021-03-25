@@ -4,12 +4,16 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.bit.sts05.model.DeptDao;
 import com.bit.sts05.model.entity.DeptVo;
 
 @Service
+@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
 public class DeptServiceImpl implements DeptService {
 
 	// 오토와이어와 같지만 자바 외부 라이브러리라서 어디서든 쓸 수 있음, 오토와이어는 스프링에서만 쓸 수 있음, 인젝트는 스프링이 아니어도 동작

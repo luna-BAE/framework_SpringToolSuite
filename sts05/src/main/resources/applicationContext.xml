@@ -3,8 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<bean id="propertyPlaceholderConfigurer"
 	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
@@ -28,5 +30,15 @@
 	class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
-		
+	
+	<bean id="deptAdvice"
+	class="com.bit.sts05.aop.DeptAop"/>
+	
+	<aop:config>
+		<aop:aspect ref="deptAdvice">
+			<aop:pointcut expression="execution(* com.bit.sts05.service.*.*(..))" id="beforeP"/>
+			<aop:before method="before" pointcut-ref="beforeP"/>
+		</aop:aspect>
+	</aop:config>
+	<aop:aspectj-autoproxy/>
 </beans>
